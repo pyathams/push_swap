@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:39:06 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/19 17:58:26 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:31:53 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,11 @@ char	**split(char *s, char c)
 	words_count = count_words(s, c);
 	if (!words_count)
 		exit(1);
-	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
+	result_array = malloc(sizeof(char *) * (size_t)(words_count + 1));
 	if (!result_array)
 		return (NULL);
-	while (words_count-- >= 0)
+	while (words_count-- > 0)
 	{
-		if (i == 0)
-		{
-			result_array[i] = malloc(sizeof(char));
-			if (!result_array[i])
-				return (NULL);
-			result_array[i++][0] = '\0';
-			continue ;
-		}
 		result_array[i++] = get_next_word(s, c);
 	}
 	result_array[i] = NULL;

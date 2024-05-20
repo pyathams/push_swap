@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:48:50 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/19 18:55:41 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:11:31 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,22 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	while (argv[i])
 	{
 		if (error_synatax(argv[i]))
+		{
+			free_split(argv);
 			free_errors(a);
+		}
 		n = ft_atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
+		{
+			free_split(argv);
 			free_errors(a);
+		}
 		if (error_duplicate(*a, (int)n))
+		{
+			free_split(argv);	
 			free_errors(a);
-		append_node (a, (int) n);
+		}
+		append_node (a, (int)n);
 		i++;
 	}
 }

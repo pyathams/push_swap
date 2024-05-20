@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:51:49 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/19 19:03:29 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:52:07 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ void	free_split(char **argv)
 {
 	int	i;
 
-	i = -1;
-	if (NULL == argv || NULL == *argv)
+	i = 0;
+	if (argv == NULL)
 		return ;
 	while (argv[i])
 	{
 		free(argv[i]);
 		i++;
 	}
-	free(argv - 1);
+	free(argv);
 }
 
 int	error_duplicate(t_stack_node *a, int n)
