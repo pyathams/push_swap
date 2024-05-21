@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utilis.c                                 :+:      :+:    :+:   */
+/*   intial_condition_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 11:45:45 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 21:18:19 by pyathams         ###   ########.fr       */
+/*   Created: 2024/05/21 20:43:25 by pyathams          #+#    #+#             */
+/*   Updated: 2024/05/21 21:18:05 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*find_last(t_stack_node *stack)
+int	intial_condition(char **argv, int argc, t_stack_node **a)
 {
-	if (!stack)
-		return (NULL);
-	while (stack -> next)
-		stack = stack -> next;
-	return (stack);
+	char	**modified_argv;
+
+	modified_argv = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		modified_argv = ft_split(argv[1], ' ');
+	if (argc == 2)
+		init_stack_a(a, modified_argv, argc);
+	else
+		init_stack_a(a, argv + 1, argc);
+	if (argc == 2)
+		free_split(modified_argv);
+	return (1);
 }

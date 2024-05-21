@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:51:49 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/20 12:52:07 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:15:12 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ int	error_duplicate(t_stack_node *a, int n)
 	return (0);
 }
 
-void	free_errors(t_stack_node **a)
+void	free_errors(t_stack_node **a, char **argv, int argc)
 {
 	free_stack(a);
+	if (argc == 2)
+		free_split(argv);
 	ft_printf("ERROR\n");
 	exit(1);
 }

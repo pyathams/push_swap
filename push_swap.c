@@ -1,22 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utilis.c                                 :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 11:45:45 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 21:18:19 by pyathams         ###   ########.fr       */
+/*   Created: 2024/05/21 21:19:27 by pyathams          #+#    #+#             */
+/*   Updated: 2024/05/21 21:19:28 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-t_stack_node	*find_last(t_stack_node *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack -> next)
-		stack = stack -> next;
-	return (stack);
-}

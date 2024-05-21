@@ -6,11 +6,37 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:48:50 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/20 13:11:31 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:06:20 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	sorted_stack(t_stack_node *a)
+{
+	if (!a)
+		return (1);
+	while (a->next)
+	{
+		if (a->nbr > a->next->nbr)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+
+int	stack_len(t_stack_node	*a)
+{
+	int	count;
+
+	count = 0;
+	while (a)
+	{
+		a = a->next;
+		count++;
+	}
+	return (count);
+}
 
 int	ft_atol(char *str)
 {
@@ -58,7 +84,7 @@ static void	append_node(t_stack_node **stack, int n)
 	}
 }
 
-void	init_stack_a(t_stack_node **a, char **argv)
+void	init_stack_a(t_stack_node **a, char **argv, int argc)
 {
 	long	n;
 	int		i;
@@ -67,21 +93,12 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	while (argv[i])
 	{
 		if (error_synatax(argv[i]))
-		{
-			free_split(argv);
-			free_errors(a);
-		}
+			free_errors(a, argv, argc);
 		n = ft_atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
-		{
-			free_split(argv);
-			free_errors(a);
-		}
+			free_errors(a, argv, argc);
 		if (error_duplicate(*a, (int)n))
-		{
-			free_split(argv);	
-			free_errors(a);
-		}
+			free_errors(a, argv, argc);
 		append_node (a, (int)n);
 		i++;
 	}
