@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:19:24 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 21:16:58 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:57:53 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	intial_condition(argv, argc, &a);
+	intial(argv, argc, &a);
 	if (!sorted_stack(a))
 	{
 		if (stack_len(a) == 2)

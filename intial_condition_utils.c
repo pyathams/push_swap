@@ -6,13 +6,13 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 20:43:25 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 21:18:05 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/22 14:58:07 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	intial_condition(char **argv, int argc, t_stack_node **a)
+int	intial(char **argv, int argc, t_stack_node **a)
 {
 	char	**modified_argv;
 

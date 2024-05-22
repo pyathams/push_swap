@@ -6,37 +6,11 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:48:50 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 18:06:20 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:40:47 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	sorted_stack(t_stack_node *a)
-{
-	if (!a)
-		return (1);
-	while (a->next)
-	{
-		if (a->nbr > a->next->nbr)
-			return (0);
-		a = a->next;
-	}
-	return (1);
-}
-
-int	stack_len(t_stack_node	*a)
-{
-	int	count;
-
-	count = 0;
-	while (a)
-	{
-		a = a->next;
-		count++;
-	}
-	return (count);
-}
 
 int	ft_atol(char *str)
 {
@@ -59,7 +33,7 @@ int	ft_atol(char *str)
 	return (result * sign);
 }
 
-static void	append_node(t_stack_node **stack, int n)
+void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;

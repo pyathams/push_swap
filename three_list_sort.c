@@ -6,13 +6,13 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:25:06 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 21:17:46 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/22 19:19:39 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	t_stack_node	*find_highest(t_stack_node *stack)
+t_stack_node	*find_highest(t_stack_node *stack)
 {
 	int				highest;
 	t_stack_node	*highest_node;
