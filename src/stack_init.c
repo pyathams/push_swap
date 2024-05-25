@@ -6,16 +6,16 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:48:50 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 19:40:47 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:04:55 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atol(char *str)
+long long int	ft_atol(char *str)
 {
-	long	result;
-	int		sign;
+	long long int	result;
+	int				sign;
 
 	result = 0;
 	sign = 1;
@@ -29,7 +29,11 @@ int	ft_atol(char *str)
 		str++;
 	}
 	while (ft_isdigit(*str))
+	{
 		result = result * 10 + (*str++ - '0');
+		if (result == LLONG_MAX / 10 && sign == -1 && *str == '8')
+			return (LLONG_MIN);
+	}
 	return (result * sign);
 }
 
@@ -60,8 +64,8 @@ void	append_node(t_stack_node **stack, int n)
 
 void	init_stack_a(t_stack_node **a, char **argv, int argc)
 {
-	long	n;
-	int		i;
+	long long int	n;
+	int				i;
 
 	i = 0;
 	while (argv[i])
@@ -69,7 +73,7 @@ void	init_stack_a(t_stack_node **a, char **argv, int argc)
 		if (error_synatax(argv[i]))
 			free_errors(a, argv, argc);
 		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
+		if (n < INT_MIN || n > INT_MAX)
 			free_errors(a, argv, argc);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a, argv, argc);

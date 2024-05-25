@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:25:06 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 19:19:39 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:40:24 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 t_stack_node	*find_highest(t_stack_node *stack)
 {
-	int				highest;
+	long			highest;
 	t_stack_node	*highest_node;
 
-	if (stack == NULL)
+	if (!stack)
 		return (NULL);
-	highest = stack->nbr;
-	highest_node = stack;
+	highest = LONG_MIN;
 	while (stack)
 	{
 		if (stack->nbr > highest)

@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:51:49 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/21 17:15:12 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:28:10 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	free_errors(t_stack_node **a, char **argv, int argc)
 	free_stack(a);
 	if (argc == 2)
 		free_split(argv);
-	ft_printf("ERROR\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }

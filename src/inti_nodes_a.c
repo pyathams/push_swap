@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:07:46 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 20:16:56 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:57:15 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	current_index(t_stack_node *stack)
 {
 	int		i;
-	bool	median;
+	int		median;
 
 	i = 0;
 	if (!stack)

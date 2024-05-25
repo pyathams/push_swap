@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 11:42:58 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 13:48:26 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:37:04 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	push(t_stack_node **dest, t_stack_node **src)
 {
 	t_stack_node	*node_we_push;
 
+	if (!*src)
+		return ;
 	node_we_push = *src;
 	*src = (*src)->next;
 	if (*src)
 		(*src)->prev = NULL;
 	node_we_push -> prev = NULL;
-	if (!(*dest))
+	if (!*dest)
 	{
 		*dest = node_we_push;
 		node_we_push -> next = NULL;

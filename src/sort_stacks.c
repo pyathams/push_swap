@@ -6,27 +6,36 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 16:11:03 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 20:05:35 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:07:56 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*get_cheapest(t_stack_node *stack)
+void	rotate_both(t_stack_node **a,
+						t_stack_node **b,
+						t_stack_node *cheapest_node)
 {
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
+	while (*b != cheapest_node->target_node
+		&& *a != cheapest_node)
+		rr(a, b);
+	current_index(*a);
+	current_index(*b);
 }
 
-void	prep_for_push(t_stack_node **stack, 
-		t_stack_node *top_node, char stack_name)
+void	rev_rotate_both(t_stack_node **a,
+								t_stack_node **b,
+								t_stack_node *cheapest_node)
+{
+	while (*b != cheapest_node->target_node
+		&& *a != cheapest_node)
+		rrr(a, b);
+	current_index(*a);
+	current_index(*b);
+}
+
+void	prep_for_push(t_stack_node **stack,
+			t_stack_node *top_node, char stack_name)
 {
 	while (*stack != top_node)
 	{
@@ -66,15 +75,4 @@ void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b);
-}
-
-void	min_on_top(t_stack_node **a)
-{
-	while ((*a)->nbr != find_lowest(*a)->nbr)
-	{
-		if (find_lowest(*a)->above_median)
-			ra(a);
-		else
-			rra(a);
-	}
 }

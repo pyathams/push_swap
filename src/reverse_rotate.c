@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 15:42:23 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 19:46:16 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:27:30 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ static void	reverse_rotate(t_stack_node **stack)
 {
 	t_stack_node	*reverse_rotate_node;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	if (!*stack || !(*stack)->next)
 		return ;
 	reverse_rotate_node = find_last(*stack);
-	if (reverse_rotate_node ->prev->next != NULL)
-		reverse_rotate_node->prev->next = NULL;
-	reverse_rotate_node->prev = NULL;
+	reverse_rotate_node->prev->next = NULL;
 	reverse_rotate_node->next = *stack;
-	(*stack)->prev = reverse_rotate_node;
+	reverse_rotate_node->prev = NULL;
 	*stack = reverse_rotate_node;
+	reverse_rotate_node->next->prev = reverse_rotate_node;
 }
 
 void	rra(t_stack_node **a)
@@ -39,14 +38,9 @@ void	rrb(t_stack_node **b)
 	write(1, "rrb\n", 4);
 }
 
-void	rev_rotate_both(t_stack_node	**a,
-				t_stack_node **b, t_stack_node *cheapest_node)
+void	rrr(t_stack_node **a, t_stack_node **b)
 {
-	while (*b != cheapest_node->target_node
-		&& *a != cheapest_node)
-	{
-		reverse_rotate(a);
-		reverse_rotate(b);
-	}
-	write (1, "rrr\n", 4);
+	reverse_rotate(a);
+	reverse_rotate(b);
+	write(1, "rrr\n", 4);
 }

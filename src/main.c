@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 21:19:27 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 19:50:29 by pyathams         ###   ########.fr       */
+/*   Created: 2024/05/17 18:19:24 by pyathams          #+#    #+#             */
+/*   Updated: 2024/05/25 16:03:52 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_stack_node **a, t_stack_node **b)
+int	main(int argc, char **argv)
 {
-	int	len_stack_a;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
-	len_stack_a = stack_len(*a);
-	if (len_stack_a-- > 3 && !(sorted_stack(*a)))
-		pb(b, a);
-	if (len_stack_a-- > 3 && !(sorted_stack(*a)))
-		pb(b, a);
-	while (len_stack_a-- > 3 && !(sorted_stack(*a)))
+	a = NULL;
+	b = NULL;
+	intial(argv, argc, &a);
+	if (!sorted_stack(a))
 	{
-		inti_nodes_a(*a, *b);
-		move_a_to_b(a, b);
+		if (stack_len(a) == 2)
+			sa(&a);
+		else if (stack_len(a) == 3)
+			three_list_sort(&a);
+		else
+			push_swap(&a, &b);
 	}
-	three_list_sort(a);
-	while (*b)
-	{
-		inti_nodes_b(*a, *b);
-		move_b_to_a(a, b);
-	}
-	current_index(*a);
-	min_on_top(a);
+	free_stack(&a);
+	return (0);
 }

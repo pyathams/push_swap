@@ -6,7 +6,7 @@
 /*   By: pyathams <pyathams@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 11:45:45 by pyathams          #+#    #+#             */
-/*   Updated: 2024/05/22 19:04:58 by pyathams         ###   ########.fr       */
+/*   Updated: 2024/05/23 19:42:36 by pyathams         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,25 @@ t_stack_node	*find_last(t_stack_node *stack)
 	return (stack);
 }
 
-int	sorted_stack(t_stack_node *a)
+bool	sorted_stack(t_stack_node *stack)
 {
-	if (!a)
+	if (!stack)
 		return (1);
-	while (a->next)
+	while (stack->next)
 	{
-		if (a->nbr > a->next->nbr)
-			return (0);
-		a = a->next;
+		if (stack->nbr > stack->next->nbr)
+			return (false);
+		stack = stack->next;
 	}
-	return (1);
+	return (true);
 }
 
 int	stack_len(t_stack_node	*a)
 {
 	int	count;
 
+	if (!a)
+		return (0);
 	count = 0;
 	while (a)
 	{
@@ -57,7 +59,7 @@ t_stack_node	*find_lowest(t_stack_node	*stack)
 	min = LONG_MAX;
 	while (stack)
 	{
-		if (stack->nbr <min)
+		if (stack->nbr < min)
 		{
 			min = stack->nbr;
 			min_node = stack;
@@ -65,4 +67,17 @@ t_stack_node	*find_lowest(t_stack_node	*stack)
 		stack = stack->next;
 	}
 	return (min_node);
+}
+
+t_stack_node	*get_cheapest(t_stack_node *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
